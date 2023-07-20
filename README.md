@@ -1,29 +1,13 @@
 
 
-TinyWebServer
+WebServer
 ===============
 Linux下C++轻量级Web服务器。
 
 * 使用 **自定义网络传输库**，实现按包发送字节流，按包接收字节流，无需关心传输协议，支持TCP和UDP（可靠UDP）
 * 使用 **线程池 + 非阻塞socket + epoll + 事件处理** 的并发模型
 * 使用**状态机**解析HTTP请求报文，支持解析**GET和POST**请求
-* 访问服务器数据库实现web端用户**注册、登录**功能，可以请求服务器**图片和视频文件**
-* 实现**同步/异步日志系统**，记录服务器运行状态
-* 经Webbench压力测试可以实现**上万的并发连接**数据交换
-
-Demo演示
-----------
-> * 注册演示
-
-<div align=center><img src="http://ww1.sinaimg.cn/large/005TJ2c7ly1ge0iz0dkleg30m80bxjyj.gif" height="429"/> </div>
-
-> * 请求图片文件演示(6M)
-
-<div align=center><img src="http://ww1.sinaimg.cn/large/005TJ2c7ly1ge0juxrnlfg30go07x4qr.gif" height="429"/> </div>
-
-> * 请求视频文件演示(39M)
-
-<div align=center><img src="http://ww1.sinaimg.cn/large/005TJ2c7ly1ge0jtxie8ng30go07xb2b.gif" height="429"/> </div>
+* 访问服务器数据库可以请求服务器**图片和视频文件**
 
 快速运行
 ------------
@@ -112,18 +96,3 @@ Demo演示
 * -a，选择反应堆模型，默认Proactor
 	* 0，Proactor模型
 	* 1，Reactor模型
-
-测试示例命令与含义
-
-```C++
-./server -p 9007 -l 1 -m 0 -o 1 -s 10 -t 10 -c 1 -a 1
-```
-
-- [x] 端口9007
-- [x] 异步写入日志
-- [x] 使用LT + LT组合
-- [x] 使用优雅关闭连接
-- [x] 数据库连接池内有10条连接
-- [x] 线程池内有10条线程
-- [x] 关闭日志
-- [x] Reactor反应堆模型
